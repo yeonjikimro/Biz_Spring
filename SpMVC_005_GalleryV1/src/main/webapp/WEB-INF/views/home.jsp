@@ -14,8 +14,13 @@
 </head>
 <body>
 	<h1>반갑습니다</h1>
-	<img src="${rootPath}/upload/${FILE}" alt="지금은 안보임">
 	<a href="${rootPath}/bbs/write">게시판 글쓰기</a>
+	<a href="${rootPath}/file/fileups">여러이미지 업로드</a>
+	<div class="images">
+		<c:forEach items="${FILES}" var="FILE">
+			<img src = "${rootPath}/upload/${FILE.i_imageName}" width="100px" alt="${FILE}">		
+		</c:forEach>
+	</div>
 </body>
 </html>
 

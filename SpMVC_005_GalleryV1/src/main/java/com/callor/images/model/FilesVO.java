@@ -13,7 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ImagesVO {
+public class FilesVO {
 	
 	private long i_seq;
 	private long i_bseq;

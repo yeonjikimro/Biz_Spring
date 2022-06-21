@@ -13,24 +13,7 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<!--  href="${rootPath}/static/css/main.css" -->
-	<resources mapping="/static/**" location="/static/" />
-	
-	<!--   script src="${rootPath}/js/main.js" -->
-	<resources mapping="/js/**" location="/static/js/" />
-	
-	<!--  link href="${rootPath}/css/main.css" -->
-	<resources mapping="/css/**" location="/static/css/" />
-
-	<!-- 업로드할 파일을 저장할 폴더 -->
-	<!-- 로컬디스크(c:) 의 server/upload 폴더를 지정하기 위의 경로에 없으면 아래 경로에서 찾아라 -->
-	<resources mapping="/upload/**" location="/static/upload/, file:///c:/server/upload/" />
-	
-	
-	<!-- String upLoadFolder = "/server/upload"; -->
-	<beans:bean id="upLoadFolder" class="java.lang.String">
-		<beans:constructor-arg value="c:/server/upload"/>	
-	</beans:bean>
+	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -38,9 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.callor.images.controller" />
-	<context:component-scan base-package="com.callor.images.service.impl" />
-	<context:component-scan base-package="com.callor.images.config" />
+	<context:component-scan base-package="com.callor.ems" />
+	
 	
 	
 </beans:beans>

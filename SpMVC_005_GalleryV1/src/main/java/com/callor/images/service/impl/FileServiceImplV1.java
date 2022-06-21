@@ -3,14 +3,13 @@ package com.callor.images.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.images.config.QualifierConfig;
+import com.callor.images.model.FilesVO;
 import com.callor.images.service.FileUpService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,48 +17,56 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service(QualifierConfig.SERVICE.FILE_V1)
 public class FileServiceImplV1 implements FileUpService{
-
-	// Spring 에서 Server 의 특정한 폴더에 접근하기 위한 중간 도구
-	private final ServletContext context;
-	private final ResourceLoader resourceLoader;
 	
-	public FileServiceImplV1(ServletContext context, ResourceLoader resourceLoader) {
-		this.context = context;
-		this.resourceLoader = resourceLoader;
+	
+	// project 폴더의 정보를 수집하기 위한 도구
+	private final ResourceLoader resLoader;
+	
+	public FileServiceImplV1(ResourceLoader resLoader) {	
+		// TODO Auto-generated constructor stub
+		this.resLoader = resLoader;
 	}
-
+	
 	@Override
 	public String fileUp(MultipartFile file) throws Exception {
 
-		// 파일이 없으면 그냥 끝내기
+		// 1. file 변수에 파일관련 정보가 있는지 검사
+		// 없으면 더이상 진행하지 마라
 		if(file == null) {
 			return null;
 		}
-
-		String upLoadPath = resourceLoader
-								.getResource("/static/upload")
+		
+		// 2. 파일 저장할 폴더 정보 수집
+		// 프로젝트 폴더가 아니고 서버가 실행될 때 서버의 폴더정보를 가져오기
+		String upLoadPath = resLoader.getResource("/static/uploade")
 								.getURI()
 								.getPath();
-		log.debug(upLoadPath);
 		
-		// 업로드한 파일 이름 추출
+		log.debug("업로드 폴더 {} ", upLoadPath);
+		
+		// 3. 업로드할 파일 이름 추출
 		String fileName = file.getOriginalFilename();
 		
+		// 4. 업로드할 폴더가 있는지 검사하여 없으면 생성하기
 		// java.io.File
 		File dir = new File(upLoadPath);
-		
-		// 만약에 서버에 /uplaod 폴더가 없으면
-		if(!dir.exists()) {
+		if( !dir.exists() ) {
+			// 4-1. 폴더 생성하기
 			dir.mkdirs();
 		}
+		
+		// 업로드할 폴더와 파일 이름을 묶어서 파일 정보 생성
 		File upLoadFile = new File(upLoadPath, fileName);
 		file.transferTo(upLoadFile);
+		
 		return fileName;
 		
 	}
 
+		
+		
 	@Override
-	public List<String> filesUp(MultipartHttpServletRequest files) throws Exception {
+	public List<FilesVO> filesUp(MultipartHttpServletRequest files) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

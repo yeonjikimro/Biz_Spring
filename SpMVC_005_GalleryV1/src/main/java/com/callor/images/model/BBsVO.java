@@ -24,6 +24,6 @@ public class BBsVO {
 	private String b_subject;
 	private String b_content;
 	
-	private List<ImagesVO> images;
+	private List<FilesVO> images;
 
 }
