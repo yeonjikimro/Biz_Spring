@@ -1,7 +1,8 @@
 package com.callor.ems.service.impl;
 
 import java.io.File;
-import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,6 +47,18 @@ public class FileUpServiceImplV1 implements FileUpService {
 
 	@Override
 	public List<String> filesUp(MultipartHttpServletRequest mFile) {
+		List<String> retFiles = new ArrayList<>();
+		
+		List<MultipartFile> fileList = Files.getFileStore("mFiles");
+		
+		
+		for(MultipartFile file : fileList) {
+			
+			String originName = file.getOriginalFilename();
+			String uuName = this.fileUp(file);
+			
+			
+		}
 		
 		return null;
 	}
