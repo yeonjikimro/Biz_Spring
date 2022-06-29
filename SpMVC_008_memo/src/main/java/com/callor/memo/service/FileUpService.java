@@ -6,10 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public interface FileUpService {
-	// 한개 파일 업로드
-	public String fileUp(MultipartFile file) throws Exception;
 	
-	// 파일 삭제
-	public boolean fileDelete(String fileName) throws Exception;
+	public String fileUp(MultipartFile file);
+	public List<String> filesUp(MultipartHttpServletRequest files);
+	public void fileDelete(String fileName);
 
 }

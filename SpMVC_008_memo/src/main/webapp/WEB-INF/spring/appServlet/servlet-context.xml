@@ -14,11 +14,15 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/static/**" location="/static/" />
-		<resources mapping="/upload/**" location="file:///c:/file/upload/, /static/upload/" />
-
+	
+	<!-- jsp 파일에서 바라볼 upload 폴더 -->
+	<resources mapping="/upload/**" location="file:///Users/kim-yeonji/Downloads/upload/" />
+	
+	<!-- java 코드에서 바라볼 upload 폴더 -->
 	<beans:bean id="upLoadFolder" class="java.lang.String">
-		<beans:constructor-arg value="c:/file/upload"/>
+		<beans:constructor-arg value="/Users/kim-yeonji/Downloads/upload"/>
 	</beans:bean>
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

@@ -1,14 +1,21 @@
 package com.callor.memo.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.memo.model.MemoVO;
-import com.callor.memo.persistance.MemoDao;
 
-public interface MemoService extends MemoDao{
+public interface MemoService {
 	
-	public String insertMemoAndFile(MemoVO memoVO, MultipartFile file);
-	public String insertMemoAndFiles(MemoVO memoVO, MultipartHttpServletRequest files);
+	public List<MemoVO> selectAll();
+	
+	public int insertAndUpdate(MemoVO memo, MultipartFile file);
+	
+	public int delete(Long seq);
+	
+	public MemoVO findById(Long seq);
+
+	public List<MemoVO> findByAuthor(String username);
 
 }

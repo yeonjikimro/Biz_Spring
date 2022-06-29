@@ -1,7 +1,5 @@
 package com.callor.memo.model;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,15 +7,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/*
+ * DTO : Data Transfer Object
+ * 역할은 VO 와 같다
+ */
+
 @Getter
 @Setter
-@ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
+@ToString
 public class MemoVO {
-
-	
 	private long m_seq;
 	private String m_author;
 	private String m_date;
@@ -25,5 +26,5 @@ public class MemoVO {
 	private String m_memo;
 	private String m_image;
 	
-	
+	private String m_up_image;
 }

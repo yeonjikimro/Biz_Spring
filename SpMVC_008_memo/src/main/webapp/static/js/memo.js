@@ -1,27 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
   const memo_table = document.querySelector("table.memo");
 
-  /*
-      이벤트 버블링을 역 이용한 이벤트 처리
-      table tag 에 click event 를 설정하고
-      매개변수(e)를 받는다
-      이 매개변수는 클릭된 요소들에 대한 정보를 가지고 있다
-      매개변수의 속성 들 중에 target 속성은
-      가장 안쪽에 위치한 클릭된 tag 에 대한 정보를 가지고 있다
-      만약 클릭된 tag 가 td 라면 자신(td)를 감싸고 있는 가장 가까운곳의
-      tr tag 정보를 요청한다
-      그리고 tr tag 에서 data-isbn 값을 추출한다 : dataset.isbn 으로 추출한다
-  
-    */
-
-  // if(book_table) {   }
   memo_table?.addEventListener("click", (e) => {
-    const td = e.target;
-    if (td.tagName === "TD") {
-      const tr = td.closest("TR");
-      const seq = tr.dataset.seq;
-      // alert(isbn);
-      document.location.href = `${rootPath}/${seq}/detail`;
+    // table 에 click 이벤트를 적용하면
+    // 가장 안쪽의 td가 target 으로 작동한다
+    const target = e.target;
+    // 가장 안쪽의 td 가 클릭되면
+    // td 를 감싸고 있는 tr 을 찾아라
+    const tr = target?.closest("TR");
+
+    const seq = tr?.dataset.seq;
+
+    /*
+    JS 에서 변수값이
+    0, undefined, null, Nan, "" 등은 if 에서 모두 false 로 인식한다
+
+    seq 값이 정상적인 범위의 값일 때만 detail 로 점프하기
+    */
+    if (seq) {
+      document.location.href = `${rootPath}/memo/${seq}/detail`;
     }
   });
 });
