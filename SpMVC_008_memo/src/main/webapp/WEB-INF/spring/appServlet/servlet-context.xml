@@ -16,11 +16,11 @@
 	<resources mapping="/static/**" location="/static/" />
 	
 	<!-- jsp 파일에서 바라볼 upload 폴더 -->
-	<resources mapping="/upload/**" location="file:///Users/kim-yeonji/Downloads/upload/" />
+	<resources mapping="/upload/**" location="file:///C:/server/upload/" />
 	
 	<!-- java 코드에서 바라볼 upload 폴더 -->
 	<beans:bean id="upLoadFolder" class="java.lang.String">
-		<beans:constructor-arg value="/Users/kim-yeonji/Downloads/upload"/>
+		<beans:constructor-arg value="/C:/server/upload"/>
 	</beans:bean>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

@@ -1,6 +1,5 @@
 package com.callor.memo.controller;
 
-<<<<<<< HEAD
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -31,8 +30,5 @@ public class UserController {
 	}
 
 }
-=======
-public class UserController {
 
-}
->>>>>>> 60bc61ab5f327f32b0c405442bc3fee930d635b8
+
