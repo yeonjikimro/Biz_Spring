@@ -9,9 +9,13 @@
 <title>Insert title here</title>
 <style>
 	form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		width: 50%;
 		text-align: center;
-		margin-left: 100px;
+		margin: 100px auto;
 	}
 	input {
 		padding : 1rem;

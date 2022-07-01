@@ -32,7 +32,6 @@ div img {
 	display: flex;
 	justify-content: flex-end;
 	width: 500px;
-	height: 250px;
 }
 
 .detail_div {
