@@ -16,7 +16,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 60%;
-	height: 60%;
+	height: 70%;
 	padding: 100px; 
 	border : 1px solid #ccc;
 	margin: 50px auto;
@@ -59,12 +59,16 @@ div img {
 .upde_button a:hover {
 	color: #d4b631;
 }
+div.de_title {
+	font-weight: bold;
+}
 </style>
 <%@ include file="../include/header.jsp"%>
 <body>
 	<div class="body">
 		<div class="img_detail">
 			<div class="detail_div">
+				<div class="de_title">제목 : ${MEMO.m_title}</div>
 				<div>작성자 : ${MEMO.m_author}</div>
 				<div>작성일자 : ${MEMO.m_date}</div>
 				<div>작성시각 : ${MEMO.m_time}</div>
