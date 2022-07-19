@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.address.model.AddressVO;
+import com.callor.address.model.SearchPage;
 import com.callor.address.service.AddressService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,15 +21,27 @@ public class HomeController {
 
 	private final AddressService addrService;
 
-	public HomeController(AddressService adddrService) {
-		this.addrService = adddrService;
+	public HomeController(AddressService addrService) {
+		this.addrService = addrService;
 		// TODO Auto-generated constructor stub
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Model model, @RequestParam(name = "pageno", required = false, defaultValue = "0") int pageno) {
 
-		List<AddressVO> addrList = addrService.selectAll();
+		// List<AddressVO> addrList = addrService.selectAll();
+		// limit : 한페이지 당 보여지는 데이터 수
+		// offset : 클릭할 페이지 수
+		SearchPage searchpage = SearchPage.builder().a_name("").limit(10).offset(pageno * 10).build();
+		
+		searchpage.setCurrentPageNo(pageno);
+		
+		// 페이지 계산
+		addrService.searchAndPage(model, searchpage);
+		
+		// 데이터 가져오기
+		List<AddressVO> addrList = addrService.searchAndPage(searchpage);
+
 		log.debug(addrList.toString());
 
 		model.addAttribute("ADDS", addrList);
@@ -66,14 +79,30 @@ public class HomeController {
 
 	}
 
-	@RequestMapping(value = "/{seq}/update", method = RequestMethod.GET)
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(@RequestParam(name = "seq", required = false, defaultValue = "0") long a_seq, Model model) {
-
 
 		AddressVO add = addrService.findById(a_seq);
 		model.addAttribute("ADD", add);
 
 		return "home";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@RequestParam("seq") long seq, AddressVO address) {
+		address.setA_seq(seq);
+		addrService.update(address);
+
+		return "redirect:/detail?seq=" + seq;
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(@RequestParam("seq") long seq, AddressVO address) {
+
+		addrService.delete(seq);
+
+		return "redirect:/";
+
 	}
 
 }

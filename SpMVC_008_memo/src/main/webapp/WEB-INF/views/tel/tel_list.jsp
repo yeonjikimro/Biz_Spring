@@ -7,66 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	width: 100%;
-	height: 100%;
-	background-color: #f5f5f5;
-}
-
-.fon {
-	margin: 100px auto !important;
-	width: 300px;
-
-}
-
-div.fon h1, h6 {
-	display: inline-block;
-	color: #d4b631;
-}
-
-input {
-	hegith: 30%;
-}
-
-table {
-	margin: 100px auto;
-	width: 60%;
-	table-layout: fixed;
-}
-
-form {
-	width: 800px;
-	margin: 20px auto;
-}
-
-#button button{
-	background-color: blue;
-}
-
-table tr td {
-	text-align: center;
-	padding-top: 50px;
-	font-size: 20px;
-	cursor: pointer;
-}
-
-table tr td:hover {
-	color: #d4b631;
-}
-</style>
+<script>
+	const rootPath = '${rootPath}'
+</script>
 </head>
+<%@ include file="../include/header.jsp"%>
 <body>
-	<div class="fon">
-		<h1>연지 친구 리스트</h1>
-		<h6>친구친구</h6>
-	</div>
+	<h1>연지 친구 리스트</h1>
+	<h6>친구친구</h6>
 
 	<form method="POST">
 		<input name="a_seq" type="hidden"
@@ -74,7 +22,7 @@ table tr td:hover {
 			name="a_name" placeholder="이름" value="${ADD.a_name}" /> <input
 			name="a_tel" placeholder="전화번호" value="${ADD.a_tel}" /> <input
 			name="a_address" placeholder="주소" value="${ADD.a_address}" />
-		<button id="button" type="submit">저장</button>
+		<button type="submit">저장</button>
 	</form>
 	<table>
 		<tr>
@@ -92,8 +40,7 @@ table tr td:hover {
 			</tr>
 		</c:forEach>
 	</table>
-	
-	<%@ include file= "/WEB-INF/views/pagination.jsp" %>
+
 
 </body>
 </html>

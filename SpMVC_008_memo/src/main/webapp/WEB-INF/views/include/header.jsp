@@ -15,6 +15,7 @@
 					<li><a href="${rootPath}/">Home</a></li>
 					<li><a href="${rootPath}/user/intro">portfolio</a></li>
 					<li><a href="${rootPath}/memo/memo_home">memo</a></li>
+					<li><a href="${rootPath}/tel/tel_list">주소록</a></li>
 					<li><a href="${rootPath}/schedule/schedule">일정 관리 </a></li>
 					<li><a href="${rootPath}/schedule/schedule">CONTACT </a></li>
 					<%
