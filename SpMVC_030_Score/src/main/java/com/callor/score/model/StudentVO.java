@@ -22,7 +22,7 @@ public class StudentVO {
 	private String st_dept;
 	private String st_grade;
 	private String st_tel;
-	private String addr;
+	private String st_addr;
 	
 	/*
 	 * 학생정보와 성적정보를 같이 묶어서 처리할 경우
