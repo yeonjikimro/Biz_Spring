@@ -2,14 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />    
+<%@ taglib uri="http://tiles.apache.org/tags-tiles"  prefix="tiles"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<tiles:insertAttribute name="head"/>
 </head>
 <body>
-	<h1>성적처리 프로젝트</h1>
-
+	<tiles:insertAttribute name="header"/>
+	<tiles:insertAttribute name="content"/>
+	
+	<footer>
+		<address>CopyRight &copy; callor@callor.com</address>
+	</footer>
+	
 </body>
 </html>

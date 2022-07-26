@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head th:replace="~{includes/include-head}">
+  </head>
+  <body>
+  <!-- include-header 파일에 header만 표시를 하겠다. -->
+  	<header th:replace="~{includes/include-header :: header}"></header>
+  	<header th:replace="~{includes/include-header :: nav}"></header>
+  	<section layout:fragment="content"></section>
+  	<footer>
+  		<address>CopyRight &copy; duswlskfk42@naver.com</address>
+  	</footer>
+    <h1 th:text="${NATION}">반갑습니다</h1>
+  </body>
+</html>
