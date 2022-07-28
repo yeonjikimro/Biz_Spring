@@ -6,9 +6,12 @@
 	<artifactId>SpMVC_040_Security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+
 	<properties>
 
+
 	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- https://mvnrepository.com/artifact/org.springframework/spring-framework-bom -->
@@ -28,33 +31,44 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
 
+		<!-- spring-jdbc -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
 		<!-- commons-dbcp2 -->
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
 		<dependency>
@@ -62,16 +76,14 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.9.0</version>
 		</dependency>
-
 		<!-- mybatis -->
+		<!-- mybatis-spring -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.5.10</version>
+			<version>3.5.9</version>
 		</dependency>
-
-		<!-- mybatis-spring -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -84,9 +96,8 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.30</version>
+			<version>8.0.29</version>
 		</dependency>
-
 		<!-- jackson-bind -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
@@ -94,8 +105,6 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.3</version>
 		</dependency>
-
-
 
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
@@ -109,6 +118,7 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.11</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -133,13 +143,19 @@
 			<version>2.3.3</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+
+
 	</dependencies>
+
+
+
 	<build>
 		<plugins>
 			<plugin>
