@@ -14,42 +14,61 @@
  		<collection property="authorities" column="username"
  			ofType="AuthorityVO"
  			select="roleSelect" >
- 		
  		</collection>
  	</resultMap>
- 	
  	
  	<select id="findById" resultType="UserVO">
  		SELECT * FROM tbl_users 
  		WHERE username=#{username}
  	</select>
  	<insert id="insert" parameterType="UserVO">
- 		INSERT INTO tbl_users( username, password, enabled )
- 		VALUES( #{username}, #{password}, #{enabled} )
+ 		INSERT INTO tbl_users( 
+ 			username, 
+ 			password,
+ 			enabled,
+ 			realname,
+ 			nickname,
+ 			tel 
+ 		)
+ 		VALUES( 
+ 			#{username}, 
+ 			#{password},
+ 			#{enabled},
+ 			#{realname},
+ 			#{nickname},
+ 			#{tel} 
+ 		)
  	</insert>
- 	<update id="update"></update>
+ 	<update id="update">
+ 		UPDATE tbl_users
+ 			SET  
+ 			password = #{password},
+ 			realname = #{realname},
+ 			nickname = #{nickname},
+ 			email = #{email},
+ 			tel = #{tel}
+ 		WHERE username = #{username}
+ 	</update>
  	<delete id="delete"></delete>
  	
  	<select id="roleSelect" resultType="AuthorityVO">
- 	
  		SELECT * FROM tbl_authorities WHERE username=#{username}
- 		
  	</select>
  	
  	<insert id="roleInsert" parameterType="AuthorityVO">
  		INSERT INTO tbl_authorities (username, authority)
  		VALUES
- 		<foreach collection="list" item="vo" separator=",">
+ 		<foreach collection="list" item="vo" separator=", ">
  				( #{vo.username}, #{vo.authority} )
  		</foreach>
- 	
  	</insert>
+ 	
  	
  	
  	<select id="create_uesr_table">
 		 	CREATE TABLE IF NOT EXISTS tbl_users (
 				username VARCHAR(20) PRIMARY KEY,
-				password  VARCHAR(20) NOT NULL,
+				password  VARCHAR(255) NOT NULL,
 				Enabled BOOLEAN DEFAULT FALSE,
 				AccountNonExpired  BOOLEAN DEFAULT TRUE,
 				AccountNonLocked  BOOLEAN  DEFAULT TRUE,

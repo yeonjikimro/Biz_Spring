@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%> 
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>  
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,26 +18,30 @@
 		list-style: none;
 		display: flex;
 		background-color: blue;
-		color: white;
+		color:white;
 	}
+	
 	nav li {
-		padding: 12px 16px;
-		margin: 5px;
+		padding:12px 16px;
+		margin:5px;
 		cursor: pointer;
 	}
 	nav li:hover {
 		box-shadow: 2px 2px 2px yellow;
 	}
+	
 	nav li:nth-of-type(2) {
-		margin-left: auto;	
+		margin-left: auto;
 	}
 	nav a {
 		text-decoration: none;
-		color: inherit;
+		color:inherit;
 	}
+	
 	form#logout-form {
-		display: none;
+		display: none
 	}
+	
 </style>
 </head>
 <body>
@@ -48,7 +52,6 @@
 	<nav>
 		<ul>
 			<li><a href="${rootPath}/">Home</a></li>
-			
 			<sec:authorize access="isAnonymous()">
 				<li><a href="${rootPath}/user/login">로그인</a></li>
 				<li><a href="${rootPath}/user/join">회원가입</a></li>
@@ -62,33 +65,47 @@
 			</sec:authorize>
 			
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<li><a href="${rootPath}/admin">관리자</a></li>	
+				<li><a href="${rootPath}/admin">관리자</a></li>
 			</sec:authorize>
 		</ul>
 	</nav>
 	<section class="w3-container w3-padding-16">
-	
 		<c:choose>
-			<c:when test="${LAYOUT == 'LOGIN'}">
+			<c:when test="${LAYOUT == 'LOGIN' }">
 				<%@ include file="/WEB-INF/views/user/login.jsp" %>
 			</c:when>
-			<c:when test="${LAYOUT == 'JOIN'}">
+			<c:when test="${LAYOUT == 'JOIN' }">
 				<%@ include file="/WEB-INF/views/user/join.jsp" %>
 			</c:when>
+			<c:when test="${LAYOUT == 'MYPAGE' }">
+				<%@ include file="/WEB-INF/views/user/mypage.jsp" %>
+			</c:when>
+			<c:when test="${LAYOUT == 'UPDATE' }">
+				<%@ include file="/WEB-INF/views/user/update.jsp" %>
+			</c:when>
+			<c:when test="${LAYOUT == 'ADMIN_PAGE' }">
+				<%@ include file="/WEB-INF/views/admin/page.jsp" %>
+			</c:when>
+			<c:when test="${LAYOUT == 'ADMIN_USER' }">
+				<%@ include file="/WEB-INF/views/admin/userupdate.jsp" %>
+			</c:when>
+
+
 			<c:otherwise>
-				<h1>여기는 홈 화면입니다</h1>
+				<h1>여기는 홈 화면입니다</h1>			
 			</c:otherwise>
 		</c:choose>
-		
-	
 	</section>
 	<form:form id="logout-form" action="${rootPath}/logout" method="POST"/>
 	<script>
-		document.querySelector("li.logout")?.addEventListener("click", () =>{
+		document.querySelector("li.logout")?.addEventListener("click",()=>{
 			document.querySelector("form#logout-form")?.submit()
 		})
 	</script>
 	
 	
+	
+	
+
 </body>
 </html>

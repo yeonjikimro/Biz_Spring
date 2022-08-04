@@ -13,11 +13,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>이 화면은 아무나 접속할 수 있는 화면입니다</h1>
-	<a href="${rootPath}/user/login">로그인 하러가기</a>
+	<h1>여기는 Admin Page</h1>
+	<table class="w3-table w3-talble-all">
+		<tr>
+			<th>USERNAME</th>
+			<th>실명</th>
+			<th>닉네임</th>
+			<th>Email</th>
+		</tr>
+		<c:forEach items="${USERS}" var="USER">
+			<tr>
+				<td>
+				<a 
+				href="${rootPath}/admin/userupdate?username=${USER.username}">
+				${USER.username}
+				</a></td>
+				<td>${USER.realname}</td>
+				<td>${USER.nickname}</td>
+				<td>${USER.email}</td>
+		</c:forEach>
+	</table>	
+	
+
 </body>
 </html>
-
-
-
-

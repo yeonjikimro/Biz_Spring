@@ -13,10 +13,10 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value="/guest", method=RequestMethod.GET)
+	@RequestMapping(value="/guest",method=RequestMethod.GET)
 	public String guest() {
-	
 		return null;
 	}
+	
 
 }

@@ -9,16 +9,19 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
+
+
+
 	<!-- dataSource : mysql -->
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/schooldb" />
-		<property name="username" value="callor" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mydb" />
+		<property name="username" value="root" />
 		<property name="password" value="!Korea8080" />
-
 	</bean>
+
+
 	<!-- SqlSessionFactory -->
 	<bean id="sessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -26,18 +29,36 @@
 		<property name="mapperLocations"
 			value="/WEB-INF/spring/mapper/*-mapper.xml" />
 		<property name="typeAliasesPackage"
-			value="com.callor.sec.model" />
+			value="com.callor.todo.model" />
+		<property name="configuration">
+			<bean class="org.apache.ibatis.session.Configuration">
+				<property name="jdbcTypeForNull" value="VARCHAR" />
+				<property name="cacheEnabled" value="true"/>
+				<property name="defaultExecutorType" value="REUSE" />
+			</bean>
+		</property>
 	</bean>
-	<!-- model package, persistance package, spring/mapper -->
+	<!-- model package, persistance package, spring/mapper 만들기 -->
 
-	<!-- SqlSessionTempate -->
+	<!-- SqlSessionTemplate -->
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sessionFactory" />
 	</bean>
-
-	<!-- mybatis-scn -->
 	<mybatis-spring:scan
-		base-package="com.callor.sec.psersistance" />
+		base-package="com.callor.todo.persistance" />
+	
+	<!-- 
+	spring jdbc 에서 자동으로 관리하는 TransactionManager
+	동시에 한 개의 method 에서 다수의 table 에 데이터를 insert, update, delte 등을 수행할 때
+	일부 테이블에서 오류가 발생하면 데이터들간의 무결성이 무너지게 된다.
+	이때 transactional 설정을 해 두면 일부에서 오류가 발생했을 때
+	ALL ROLLBACK 을 수행하여 무결성을 유지시킨다. -->
+	<tx:jta-transaction-manager/>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"/>
+	</bean>
 
+	<!-- mybatis-scan -->
 
 </beans>
+
