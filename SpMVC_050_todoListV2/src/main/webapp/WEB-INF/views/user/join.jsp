@@ -2,26 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />    
-<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Insert title here</title>
 </head>
 <body>
-<h1>join</h1>
-
+	<h1>회원가입 페이지</h1>
 	<form:form>
-		<h3>아이디 : <input name="id" placeholder="아이디를 입력하세요"></h3>
-		<h3>비밀번호 : <input name="password" type="password"></h3>
-		<h3>비밀번호 확인 : <input name="re_password" type="password"></h3>
-		<h3>이메일 : <input name="email" placeholder="email을 입력하세요"></h3>
-		<h3>이름 : <input name="realname" placeholder="이름을 입력하세요"></h3>
-		<h3>닉네임 : <input name="nickname" placeholder="nickname을 입력하세요"></h3>
-		
-		<button>회원가입</button>	
+		<div><input name="username" placeholder="USERNAME"></div>
+		<div><input name="password" type="password"></div>
+		<div><input name="re_password" type="password"></div>
+		<div><input name="email" placeholder="EMAIL"></div>
+		<div><input name="realname" placeholder="REAL NAME"></div>
+		<div><input name="nickname" placeholder="NICK NAME"></div>
+		<div><button>회원가입</button></div>	
 	</form:form>
-
 </body>
 </html>
