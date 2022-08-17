@@ -145,3 +145,7 @@ typings/
 # ETC
 .bak
 NaverConfig.*
+
+#Security and API Key
+NaverConfig.*
+config/
